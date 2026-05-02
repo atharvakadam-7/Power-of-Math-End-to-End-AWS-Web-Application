@@ -2,7 +2,6 @@
 
 A serverless web application built entirely on AWS. Users enter a base and an exponent, hit Calculate, and get the result back in the browser. Every calculation is stored in a DynamoDB table. The project walks through five AWS services and shows how they wire together into a working application.
 
-This repo documents the build from the tutorial video: [Architect and Build an End-to-End AWS Web Application from Scratch, Step by Step](https://www.youtube.com/watch?v=7m_q1ldzw0U).
 
 ---
 
