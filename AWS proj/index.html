@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To the Power of Math!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>To the Power of Math!</h1>
+
+    <label>Base:</label>
+    <input id="base" type="number" placeholder="Enter base">
+
+    <label>Exponent:</label>
+    <input id="exponent" type="number" placeholder="Enter exponent">
+
+    <button onclick="callAPI()">Calculate</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Replace this with your actual API Gateway Invoke URL
+        const API_ENDPOINT = "YOUR-API-GATEWAY-INVOKE-URL";
+
+        function callAPI() {
+            const base = document.getElementById("base").value;
+            const exponent = document.getElementById("exponent").value;
+
+            const inputData = {
+                base: base,
+                exponent: exponent
+            };
+
+            fetch(API_ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(inputData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = data.body;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("result").innerHTML = "Error calling the API. Check the console for details.";
+            });
+        }
+    </script>
+</body>
+</html>
